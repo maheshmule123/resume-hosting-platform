@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Login - Resume Builder</title>
 
 <style>
@@ -60,11 +61,6 @@ button:hover{
     background:#163a5c;
 }
 
-button:disabled{
-    background:#999;
-    cursor:not-allowed;
-}
-
 .register{
     text-align:center;
     margin-top:20px;
@@ -75,6 +71,7 @@ button:disabled{
     font-weight:bold;
 }
 </style>
+
 </head>
 
 <body>
@@ -103,7 +100,7 @@ button:disabled{
     required
 >
 
-<button type="submit" id="loginButton">
+<button type="submit">
 Login
 </button>
 
@@ -116,14 +113,11 @@ Don't have an account?
 
 </div>
 
+
 <script>
 
-const API_URL =
-"https://f5ycsa1wi2.execute-api.ap-south-1.amazonaws.com/prod/login";
-
-
 document.getElementById("loginForm")
-.addEventListener("submit", async function(e){
+.addEventListener("submit", function(e){
 
     e.preventDefault();
 
@@ -133,110 +127,59 @@ document.getElementById("loginForm")
     const password =
         document.getElementById("password").value;
 
-    const loginButton =
-        document.getElementById("loginButton");
 
-    loginButton.disabled = true;
-    loginButton.innerText = "Logging in...";
-
-    try {
-
-        console.log("Calling Login API...");
-        console.log("API:", API_URL);
-
-        const response = await fetch(
-            API_URL,
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    email: email,
-                    password: password
-                })
-            }
-        );
-
-        console.log("Status:", response.status);
-
-        const text = await response.text();
-
-        console.log("Raw Response:", text);
-
-        let data;
-
-        try {
-            data = JSON.parse(text);
-        }
-        catch(parseError) {
-
-            throw new Error(
-                "Invalid server response: " + text
-            );
-
-        }
+    // Get registered user
+    const userData =
+        localStorage.getItem("resumeBuilderUser");
 
 
-        if(response.ok){
+    // Account not found
+    if(!userData){
 
-            localStorage.setItem(
-                "loggedIn",
-                "true"
-            );
+        alert("Account not found! Please register first.");
 
-            localStorage.setItem(
-                "loggedInEmail",
-                data.email || email
-            );
-
-            localStorage.setItem(
-                "userId",
-                data.userid || ""
-            );
-
-            localStorage.setItem(
-                "userName",
-                data.name || ""
-            );
-
-            alert("Login Successful!");
-
-            window.location.href =
-                "dashbord.html";
-
-        }
-        else{
-
-            alert(
-                data.message ||
-                "Invalid email or password!"
-            );
-
-        }
-
+        return;
     }
 
-    catch(error){
 
-        console.error(
-            "LOGIN ERROR:",
-            error
+    const user =
+        JSON.parse(userData);
+
+
+    // Check email and password
+    if(
+        email === user.email &&
+        password === user.password
+    ){
+
+        // Login information
+        localStorage.setItem(
+            "loggedIn",
+            "true"
         );
 
-        alert(
-            "Login API Error: " +
-            error.message
+        localStorage.setItem(
+            "loggedInEmail",
+            user.email
         );
+
+        localStorage.setItem(
+            "userName",
+            user.name
+        );
+
+
+        alert("Login Successful!");
+
+
+        // Dashboard
+        window.location.href =
+            "dashbord.html";
 
     }
+    else{
 
-    finally {
-
-        loginButton.disabled = false;
-        loginButton.innerText = "Login";
+        alert("Invalid email or password!");
 
     }
 
