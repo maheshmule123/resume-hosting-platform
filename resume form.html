@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Create Resume</title>
 
 <style>
@@ -41,8 +40,7 @@ label{
     margin-bottom:8px;
 }
 
-input,
-textarea{
+input,textarea{
     width:100%;
     box-sizing:border-box;
     padding:12px;
@@ -70,10 +68,6 @@ button{
     font-size:16px;
     cursor:pointer;
 }
-
-button:hover{
-    background:#163a5c;
-}
 </style>
 </head>
 
@@ -90,58 +84,47 @@ button:hover{
 
 <div class="group">
 <label>Student Name</label>
-<input type="text" id="name"
-placeholder="Enter your full name" required>
+<input type="text" id="name" required>
 </div>
 
 <div class="group">
 <label>Address</label>
-<textarea id="address"
-placeholder="Enter your address" required></textarea>
+<textarea id="address" required></textarea>
 </div>
 
 <div class="group">
 <label>Email</label>
-<input type="email" id="email"
-placeholder="Enter your email" required>
+<input type="email" id="email" required>
 </div>
 
 <div class="group">
 <label>Profile Picture</label>
-<input type="file" id="photo"
-accept="image/*" required>
+<input type="file" id="photo" accept="image/*" required>
 </div>
 
 <div class="group">
 <label>Qualification</label>
-<textarea id="qualification"
-placeholder="Enter your qualification" required></textarea>
+<textarea id="qualification" required></textarea>
 </div>
 
 <div class="group">
 <label>Skills</label>
-<textarea id="skills"
-placeholder="HTML, CSS, JavaScript, Python, Java, SQL..."
-required></textarea>
+<textarea id="skills" required></textarea>
 </div>
 
 <div class="group">
 <label>Experience</label>
-<textarea id="experience"
-placeholder="Enter your experience or write Fresher"
-required></textarea>
+<textarea id="experience" required></textarea>
 </div>
 
 <div class="group">
 <label>Projects</label>
-<textarea id="projects"
-placeholder="Enter your project details" required></textarea>
+<textarea id="projects" required></textarea>
 </div>
 
 <div class="group">
 <label>Certificates</label>
-<textarea id="certificates"
-placeholder="Enter your certificates" required></textarea>
+<textarea id="certificates" required></textarea>
 </div>
 
 <div class="buttons">
@@ -150,8 +133,7 @@ placeholder="Enter your certificates" required></textarea>
 Generate Resume
 </button>
 
-<button type="button"
-onclick="location.href='dashboard.html'">
+<button type="button" onclick="goDashboard()">
 Back to Dashboard
 </button>
 
@@ -163,86 +145,61 @@ Back to Dashboard
 
 <script>
 
-document.getElementById("resumeForm")
-.addEventListener("submit", function(event){
+document.getElementById("resumeForm").addEventListener("submit", function(e){
 
-    event.preventDefault();
+    e.preventDefault();
 
-    const photo =
-        document.getElementById("photo").files[0];
+    const photo = document.getElementById("photo").files[0];
 
     if(!photo){
         alert("Please select a profile picture.");
         return;
     }
 
-    // Save resume information
+    localStorage.setItem("studentName",
+        document.getElementById("name").value.trim());
 
-    localStorage.setItem(
-        "studentName",
-        document.getElementById("name").value.trim()
-    );
+    localStorage.setItem("address",
+        document.getElementById("address").value.trim());
 
-    localStorage.setItem(
-        "address",
-        document.getElementById("address").value.trim()
-    );
+    localStorage.setItem("email",
+        document.getElementById("email").value.trim());
 
-    localStorage.setItem(
-        "email",
-        document.getElementById("email").value.trim()
-    );
+    localStorage.setItem("qualification",
+        document.getElementById("qualification").value.trim());
 
-    localStorage.setItem(
-        "qualification",
-        document.getElementById("qualification").value.trim()
-    );
+    localStorage.setItem("skills",
+        document.getElementById("skills").value.trim());
 
-    localStorage.setItem(
-        "skills",
-        document.getElementById("skills").value.trim()
-    );
+    localStorage.setItem("experience",
+        document.getElementById("experience").value.trim());
 
-    localStorage.setItem(
-        "experience",
-        document.getElementById("experience").value.trim()
-    );
+    localStorage.setItem("projects",
+        document.getElementById("projects").value.trim());
 
-    localStorage.setItem(
-        "projects",
-        document.getElementById("projects").value.trim()
-    );
-
-    localStorage.setItem(
-        "certificates",
-        document.getElementById("certificates").value.trim()
-    );
-
-
-    // Save profile picture
+    localStorage.setItem("certificates",
+        document.getElementById("certificates").value.trim());
 
     const reader = new FileReader();
 
     reader.onload = function(){
 
-        localStorage.setItem(
-            "profilePhoto",
-            reader.result
-        );
+        localStorage.setItem("profilePhoto", reader.result);
+        localStorage.setItem("resumeCreated", "true");
 
-        localStorage.setItem(
-            "resumeCreated",
-            "true"
-        );
+        alert("Resume Generated Successfully!");
 
-        // Open generated resume
-
-        window.location.href = "resume.html";
+        /* Open resume.html */
+        window.location.href = "./resume.html";
     };
 
     reader.readAsDataURL(photo);
 
 });
+
+function goDashboard(){
+    window.location.href = "./dashboard.html";
+}
 
 </script>
 
