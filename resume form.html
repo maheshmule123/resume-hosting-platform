@@ -70,17 +70,18 @@ button{
     font-size:16px;
     cursor:pointer;
 }
+
+button:hover{
+    background:#163a5c;
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">
-
-<h1>Create Your Resume</h1>
-
-<p>Fill Your Information</p>
-
+    <h1>Create Your Resume</h1>
+    <p>Fill Your Information</p>
 </div>
 
 <div class="container">
@@ -89,77 +90,58 @@ button{
 
 <div class="group">
 <label>Student Name</label>
-<input
-type="text"
-id="name"
-placeholder="Enter your full name"
-required>
+<input type="text" id="name"
+placeholder="Enter your full name" required>
 </div>
 
 <div class="group">
 <label>Address</label>
-<textarea
-id="address"
-placeholder="Enter your address"
-required></textarea>
+<textarea id="address"
+placeholder="Enter your address" required></textarea>
 </div>
 
 <div class="group">
 <label>Email</label>
-<input
-type="email"
-id="email"
-placeholder="Enter your email"
-required>
+<input type="email" id="email"
+placeholder="Enter your email" required>
 </div>
 
 <div class="group">
 <label>Profile Picture</label>
-<input
-type="file"
-id="photo"
-accept="image/*"
-required>
+<input type="file" id="photo"
+accept="image/*" required>
 </div>
 
 <div class="group">
 <label>Qualification</label>
-<textarea
-id="qualification"
-placeholder="Enter your qualification"
-required></textarea>
+<textarea id="qualification"
+placeholder="Enter your qualification" required></textarea>
 </div>
 
 <div class="group">
 <label>Skills</label>
-<textarea
-id="skills"
+<textarea id="skills"
 placeholder="HTML, CSS, JavaScript, Python, Java, SQL..."
 required></textarea>
 </div>
 
 <div class="group">
 <label>Experience</label>
-<textarea
-id="experience"
+<textarea id="experience"
 placeholder="Enter your experience or write Fresher"
 required></textarea>
 </div>
 
 <div class="group">
 <label>Projects</label>
-<textarea
-id="projects"
-placeholder="Enter your project details"
-required></textarea>
+<textarea id="projects"
+placeholder="Enter your project details" required></textarea>
 </div>
 
 <div class="group">
 <label>Certificates</label>
-<textarea
-id="certificates"
-placeholder="Enter your certificates"
-required></textarea>
+<textarea id="certificates"
+placeholder="Enter your certificates" required></textarea>
 </div>
 
 <div class="buttons">
@@ -168,8 +150,7 @@ required></textarea>
 Generate Resume
 </button>
 
-<button
-type="button"
+<button type="button"
 onclick="location.href='dashboard.html'">
 Back to Dashboard
 </button>
@@ -183,29 +164,25 @@ Back to Dashboard
 <script>
 
 document.getElementById("resumeForm")
-.addEventListener("submit",function(event){
+.addEventListener("submit", function(event){
 
     event.preventDefault();
 
     const photo =
-    document.getElementById("photo").files[0];
+        document.getElementById("photo").files[0];
 
     if(!photo){
-
         alert("Please select a profile picture.");
         return;
-
     }
+
+    // Save resume information
 
     localStorage.setItem(
         "studentName",
         document.getElementById("name").value.trim()
     );
 
-    localStorage.setitem(
-          "studentmobilename",
-          document.getElementById("mobilenumber").value.trim()
-    );
     localStorage.setItem(
         "address",
         document.getElementById("address").value.trim()
@@ -242,10 +219,11 @@ document.getElementById("resumeForm")
     );
 
 
-    const reader =
-    new FileReader();
+    // Save profile picture
 
-    reader.onload=function(){
+    const reader = new FileReader();
+
+    reader.onload = function(){
 
         localStorage.setItem(
             "profilePhoto",
@@ -257,9 +235,9 @@ document.getElementById("resumeForm")
             "true"
         );
 
-        window.location.href=
-        "resume.html";
+        // Open generated resume
 
+        window.location.href = "resume.html";
     };
 
     reader.readAsDataURL(photo);
