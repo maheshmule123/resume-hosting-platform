@@ -1,290 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Generated Resume</title>
+<title>Create Resume</title>
 
 <style>
-
 body{
     margin:0;
-    background:#eeeeee;
     font-family:Arial,sans-serif;
+    background:#f4f7fb;
 }
 
-.resume{
-    width:800px;
-    max-width:92%;
+.header{
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:22px;
+}
+
+.container{
+    width:90%;
+    max-width:800px;
     margin:30px auto;
-    padding:40px;
-    box-sizing:border-box;
     background:white;
-    box-shadow:0 4px 18px rgba(0,0,0,.15);
+    padding:30px;
+    box-sizing:border-box;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
-.top-section{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    border-bottom:2px solid #1f4e79;
-    padding-bottom:20px;
+.group{
+    margin-bottom:20px;
 }
 
-.personal-info{
-    flex:1;
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-.personal-info h1{
-    margin:0 0 15px;
-    font-size:30px;
-    color:#1f4e79;
-}
-
-.personal-info p{
-    margin:8px 0;
+input,
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:7px;
     font-size:15px;
 }
 
-.profile-photo{
-    width:150px;
-    height:150px;
-    object-fit:cover;
-    border:2px solid #1f4e79;
-    margin-left:25px;
-}
-
-.section{
-    margin-top:25px;
-}
-
-.section h2{
-    margin:0 0 10px;
-    padding-bottom:7px;
-    color:#1f4e79;
-    font-size:20px;
-    border-bottom:1px solid #cccccc;
-}
-
-.section p{
-    margin:0;
-    font-size:15px;
-    line-height:1.7;
-    white-space:pre-line;
+textarea{
+    min-height:90px;
+    resize:vertical;
 }
 
 .buttons{
     text-align:center;
-    margin:25px;
 }
 
 button{
-    padding:12px 25px;
-    margin:5px;
-    border:none;
-    border-radius:7px;
+    padding:14px 30px;
+    margin:8px;
     background:#1f4e79;
     color:white;
-    font-size:15px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
     cursor:pointer;
 }
 
 button:hover{
     background:#163a5c;
 }
-
-/* PRINT / SAVE AS PDF */
-
-@media print{
-
-    body{
-        background:white;
-    }
-
-    .resume{
-        width:100%;
-        max-width:none;
-        margin:0;
-        padding:30px;
-        box-shadow:none;
-    }
-
-    .buttons{
-        display:none;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<div class="resume">
-
-    <div class="top-section">
-
-        <div class="personal-info">
-
-            <h1 id="studentName">
-                Student Name
-            </h1>
-
-            <p>
-                <strong>Address:</strong>
-                <span id="address"></span>
-            </p>
-
-            <p>
-                <strong>Email:</strong>
-                <span id="email"></span>
-            </p>
-
-        </div>
-
-        <img
-            id="profilePhoto"
-            class="profile-photo"
-            alt="Profile Picture">
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Qualification</h2>
-
-        <p id="qualification"></p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Skills</h2>
-
-        <p id="skills"></p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Experience</h2>
-
-        <p id="experience"></p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Projects</h2>
-
-        <p id="projects"></p>
-
-    </div>
-
-
-    <div class="section">
-
-        <h2>Certificates</h2>
-
-        <p id="certificates"></p>
-
-    </div>
-
+<div class="header">
+    <h1>Create Your Resume</h1>
+    <p>Fill Your Information</p>
 </div>
 
+<div class="container">
+
+<form id="resumeForm">
+
+<div class="group">
+<label>Student Name</label>
+<input type="text" id="name"
+placeholder="Enter your full name" required>
+</div>
+
+<div class="group">
+<label>Address</label>
+<textarea id="address"
+placeholder="Enter your address" required></textarea>
+</div>
+
+<div class="group">
+<label>Email</label>
+<input type="email" id="email"
+placeholder="Enter your email" required>
+</div>
+
+<div class="group">
+<label>Profile Picture</label>
+<input type="file" id="photo"
+accept="image/*" required>
+</div>
+
+<div class="group">
+<label>Qualification</label>
+<textarea id="qualification"
+placeholder="Enter your qualification" required></textarea>
+</div>
+
+<div class="group">
+<label>Skills</label>
+<textarea id="skills"
+placeholder="HTML, CSS, JavaScript, Python, Java, SQL..."
+required></textarea>
+</div>
+
+<div class="group">
+<label>Experience</label>
+<textarea id="experience"
+placeholder="Enter your experience or write Fresher"
+required></textarea>
+</div>
+
+<div class="group">
+<label>Projects</label>
+<textarea id="projects"
+placeholder="Enter your project details"
+required></textarea>
+</div>
+
+<div class="group">
+<label>Certificates</label>
+<textarea id="certificates"
+placeholder="Enter your certificates"
+required></textarea>
+</div>
 
 <div class="buttons">
 
-    <button onclick="downloadPDF()">
-        📥 Download PDF
-    </button>
+<button type="submit">
+Generate Resume
+</button>
 
-    <button onclick="backToDashboard()">
-        ⬅ Back to Dashboard
-    </button>
+<button type="button"
+onclick="goDashboard()">
+Back to Dashboard
+</button>
 
 </div>
 
+</form>
+
+</div>
 
 <script>
 
-function getData(key){
+document.getElementById("resumeForm")
+.addEventListener("submit", function(event){
 
-    return localStorage.getItem(key) || "Not Added";
+    event.preventDefault();
 
-}
+    const photo =
+        document.getElementById("photo").files[0];
+
+    if(!photo){
+        alert("Please select a profile picture.");
+        return;
+    }
+
+    // Save resume data
+
+    localStorage.setItem(
+        "studentName",
+        document.getElementById("name").value.trim()
+    );
+
+    localStorage.setItem(
+        "address",
+        document.getElementById("address").value.trim()
+    );
+
+    localStorage.setItem(
+        "email",
+        document.getElementById("email").value.trim()
+    );
+
+    localStorage.setItem(
+        "qualification",
+        document.getElementById("qualification").value.trim()
+    );
+
+    localStorage.setItem(
+        "skills",
+        document.getElementById("skills").value.trim()
+    );
+
+    localStorage.setItem(
+        "experience",
+        document.getElementById("experience").value.trim()
+    );
+
+    localStorage.setItem(
+        "projects",
+        document.getElementById("projects").value.trim()
+    );
+
+    localStorage.setItem(
+        "certificates",
+        document.getElementById("certificates").value.trim()
+    );
 
 
-/* LOAD RESUME DATA */
+    // Save profile photo
 
-document.getElementById("studentName").textContent =
-    getData("studentName");
+    const reader = new FileReader();
 
-document.getElementById("address").textContent =
-    getData("address");
+    reader.onload = function(){
 
-document.getElementById("email").textContent =
-    getData("email");
+        localStorage.setItem(
+            "profilePhoto",
+            reader.result
+        );
 
-document.getElementById("qualification").textContent =
-    getData("qualification");
+        localStorage.setItem(
+            "resumeCreated",
+            "true"
+        );
 
-document.getElementById("skills").textContent =
-    getData("skills");
+        alert("Resume Generated Successfully!");
 
-document.getElementById("experience").textContent =
-    getData("experience");
+        // IMPORTANT:
+        // Your file name is Resume.html
+        window.location.href = "Resume.html";
 
-document.getElementById("projects").textContent =
-    getData("projects");
+    };
 
-document.getElementById("certificates").textContent =
-    getData("certificates");
+    reader.onerror = function(){
 
+        alert("Unable to load profile picture.");
 
-/* LOAD PROFILE PHOTO */
+    };
 
-const savedPhoto =
-    localStorage.getItem("profilePhoto");
+    reader.readAsDataURL(photo);
 
-if(savedPhoto){
-
-    document.getElementById("profilePhoto").src =
-        savedPhoto;
-
-}
+});
 
 
-/* DOWNLOAD PDF */
+function goDashboard(){
 
-function downloadPDF(){
-
-    window.print();
-
-}
-
-
-/* BACK TO DASHBOARD */
-
-function backToDashboard(){
-
-    window.location.href =
-        "dashbord.html";
+    window.location.href = "dashboard.html";
 
 }
 
 </script>
 
 </body>
-
 </html>
