@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile - Resume Hosting Platform</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #1f4e79;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-card {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        /* LEFT SIDE */
+        .information {
+            flex: 1;
+        }
+
+        .information h2 {
+            color: #1f4e79;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .information p {
+            font-size: 17px;
+            margin: 18px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            line-height: 1.5;
+        }
+
+        /* RIGHT SIDE */
+        .photo-section {
+            width: 180px;
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #1f4e79;
+        }
+
+        .photo-section p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* CREATE RESUME BUTTON */
+        .create-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 14px 35px;
+            background: #1f4e79;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .create-btn:hover {
+            background: #163a5c;
+        }
+
+        @media (max-width: 650px) {
+
+            .profile-card {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+
+            .information {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Student Profile</h1>
+        <p>Resume Hosting Platform</p>
+    </div>
+
+
+    <!-- PROFILE -->
+    <div class="profile-card">
+
+        <!-- LEFT SIDE INFORMATION -->
+        <div class="information">
+
+            <h2 id="studentName">
+                Student Name
+            </h2>
+
+            <p>
+                <strong>Qualification:</strong>
+                <span id="qualification">
+                    Not Added
+                </span>
+            </p>
+
+            <p>
+                <strong>Skills:</strong>
+                <span id="skills">
+                    Not Added
+                </span>
+            </p>
+
+            <p>
+                <strong>Experience:</strong>
+                <span id="experience">
+                    Not Added
+                </span>
+            </p>
+
+            <p>
+                <strong>Projects:</strong>
+                <span id="projects">
+                    Not Added
+                </span>
+            </p>
+
+            <p>
+                <strong>Certificates:</strong>
+                <span id="certificates">
+                    Not Added
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- RIGHT SIDE PROFILE PHOTO -->
+        <div class="photo-section">
+s
+            <img
+                id="profilePhoto"
+                src="profile.jpg"
+                class="profile-picture"
+                alt="Profile Picture"
+            >
+
+            <p>Profile Picture</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- CREATE RESUME BUTTON -->
+    <button class="create-btn" onclick="createResume()">
+        Create Resume
+    </button>
+
+
+    <script>
+
+        function createResume() {
+            window.location.href = "resume-form.html";
+        }
+
+    </script>
+
+</body>
+</html>

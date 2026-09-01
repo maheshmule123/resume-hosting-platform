@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Generated Resume</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#eeeeee;
+    font-family:Arial,sans-serif;
+}
+
+.resume{
+    width:800px;
+    max-width:92%;
+    margin:30px auto;
+    padding:40px;
+    box-sizing:border-box;
+    background:white;
+    box-shadow:0 4px 18px rgba(0,0,0,.15);
+}
+
+.top-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    border-bottom:2px solid #1f4e79;
+    padding-bottom:20px;
+}
+
+.personal-info{
+    flex:1;
+}
+
+.personal-info h1{
+    margin:0 0 15px;
+    font-size:30px;
+    color:#1f4e79;
+}
+
+.personal-info p{
+    margin:8px 0;
+    font-size:15px;
+}
+
+.profile-photo{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border:2px solid #1f4e79;
+    margin-left:25px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section h2{
+    margin:0 0 10px;
+    padding-bottom:7px;
+    color:#1f4e79;
+    font-size:20px;
+    border-bottom:1px solid #cccccc;
+}
+
+.section p{
+    margin:0;
+    font-size:15px;
+    line-height:1.7;
+    white-space:pre-line;
+}
+
+.buttons{
+    text-align:center;
+    margin:25px;
+}
+
+button{
+    padding:12px 25px;
+    margin:5px;
+    border:none;
+    border-radius:7px;
+    background:#1f4e79;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#163a5c;
+}
+
+/* PRINT / SAVE AS PDF */
+
+@media print{
+
+    body{
+        background:white;
+    }
+
+    .resume{
+        width:100%;
+        max-width:none;
+        margin:0;
+        padding:30px;
+        box-shadow:none;
+    }
+
+    .buttons{
+        display:none;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="resume">
+
+    <div class="top-section">
+
+        <div class="personal-info">
+
+            <h1 id="studentName">
+                Student Name
+            </h1>
+
+            <p>
+                <strong>Address:</strong>
+                <span id="address"></span>
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="email"></span>
+            </p>
+
+        </div>
+
+        <img
+            id="profilePhoto"
+            class="profile-photo"
+            alt="Profile Picture">
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Qualification</h2>
+
+        <p id="qualification"></p>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Skills</h2>
+
+        <p id="skills"></p>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Experience</h2>
+
+        <p id="experience"></p>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Projects</h2>
+
+        <p id="projects"></p>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Certificates</h2>
+
+        <p id="certificates"></p>
+
+    </div>
+
+</div>
+
+
+<div class="buttons">
+
+    <button onclick="downloadPDF()">
+        📥 Download PDF
+    </button>
+
+    <button onclick="backToDashboard()">
+        ⬅ Back to Dashboard
+    </button>
+
+</div>
+
+
+<script>
+
+function getData(key){
+
+    return localStorage.getItem(key) || "Not Added";
+
+}
+
+
+/* LOAD RESUME DATA */
+
+document.getElementById("studentName").textContent =
+    getData("studentName");
+
+document.getElementById("address").textContent =
+    getData("address");
+
+document.getElementById("email").textContent =
+    getData("email");
+
+document.getElementById("qualification").textContent =
+    getData("qualification");
+
+document.getElementById("skills").textContent =
+    getData("skills");
+
+document.getElementById("experience").textContent =
+    getData("experience");
+
+document.getElementById("projects").textContent =
+    getData("projects");
+
+document.getElementById("certificates").textContent =
+    getData("certificates");
+
+
+/* LOAD PROFILE PHOTO */
+
+const savedPhoto =
+    localStorage.getItem("profilePhoto");
+
+if(savedPhoto){
+
+    document.getElementById("profilePhoto").src =
+        savedPhoto;
+
+}
+
+
+/* DOWNLOAD PDF */
+
+function downloadPDF(){
+
+    window.print();
+
+}
+
+
+/* BACK TO DASHBOARD */
+
+function backToDashboard(){
+
+    window.location.href =
+        "dashbord.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
