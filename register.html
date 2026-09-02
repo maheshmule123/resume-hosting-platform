@@ -1,114 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Mahesh Resume Builder</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.box{
-    width:90%;
-    max-width:420px;
-    margin:60px auto;
-    padding:30px;
-    box-sizing:border-box;
-    background:white;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.15);
-}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-h1{
-    text-align:center;
-    color:#1f4e79;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-label{
-    display:block;
-    margin-top:18px;
-    margin-bottom:7px;
-    font-weight:bold;
-}
+        body {
+            font-family: "Inter", sans-serif;
+            min-height: 100vh;
+            background: #f4f0e8;
+            color: #202722;
+        }
 
-input{
-    width:100%;
-    box-sizing:border-box;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:7px;
-}
+        .page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 43% 57%;
+        }
 
-button{
-    width:100%;
-    margin-top:25px;
-    padding:13px;
-    border:none;
-    border-radius:7px;
-    background:#1f4e79;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
+        .visual {
+            min-height: 100vh;
+            position: relative;
+            padding: 45px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-.login{
-    text-align:center;
-    margin-top:20px;
-}
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(18, 29, 25, 0.12),
+                    rgba(18, 29, 25, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85");
 
-.login a{
-    color:#1f4e79;
-    font-weight:bold;
-}
-</style>
+            background-size: cover;
+            background-position: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.94);
+            color: #214235;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .brand-subtitle {
+            margin-top: 3px;
+            font-size: 9px;
+            color: rgba(255,255,255,0.72);
+        }
+
+        .visual-content {
+            max-width: 430px;
+        }
+
+        .page-number {
+            margin-bottom: 16px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.62);
+        }
+
+        .visual-content h1 {
+            font-size: clamp(40px, 4vw, 60px);
+            line-height: 1.04;
+            letter-spacing: -2.5px;
+            margin-bottom: 22px;
+        }
+
+        .visual-content h1 span {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .visual-content p {
+            max-width: 400px;
+            color: rgba(255,255,255,0.78);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .quote {
+            max-width: 370px;
+            padding: 18px 20px;
+            border-left: 2px solid rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.20);
+            backdrop-filter: blur(12px);
+            font-size: 11px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.86);
+        }
+
+        .form-area {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f0e8;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 455px;
+            padding: 42px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.78);
+            border: 1px solid rgba(45,55,48,0.10);
+            box-shadow: 0 25px 70px rgba(39,45,40,0.12);
+        }
+
+        .header {
+            margin-bottom: 27px;
+        }
+
+        .step {
+            display: inline-flex;
+            padding: 6px 11px;
+            border-radius: 20px;
+            background: #e3eee8;
+            color: #2c654c;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            margin-bottom: 15px;
+        }
+
+        .header h2 {
+            font-size: 29px;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #7b837e;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #505953;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .input {
+            height: 51px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 13px;
+            background: white;
+            border: 1px solid #dfe4df;
+            border-radius: 11px;
+            transition: .25s;
+        }
+
+        .input:focus-within {
+            border-color: #6b9b81;
+            box-shadow: 0 0 0 4px rgba(70,130,95,0.08);
+        }
+
+        .icon {
+            width: 29px;
+            height: 29px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0eee7;
+            color: #5b7065;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .input input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #303632;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .input input::placeholder {
+            color: #a4aaa6;
+        }
+
+        .password-help {
+            margin-top: 6px;
+            color: #929995;
+            font-size: 9px;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin: 20px 0;
+            color: #7a817d;
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .terms input {
+            margin-top: 2px;
+            accent-color: #3e7459;
+        }
+
+        .terms a {
+            color: #315f4b;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .create {
+            width: 100%;
+            height: 51px;
+            border: none;
+            border-radius: 11px;
+            background: #233b31;
+            color: white;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(35,59,49,0.18);
+            transition: .3s;
+        }
+
+        .create:hover {
+            background: #172c23;
+            transform: translateY(-1px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0;
+            color: #a0a6a2;
+            font-size: 9px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            background: #e1e4e0;
+            flex: 1;
+        }
+
+        .google {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #dfe3df;
+            border-radius: 10px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            color: #414744;
+        }
+
+        .google-mark {
+            width: 21px;
+            height: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f3f3f3;
+            color: #4285f4;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .login {
+            margin-top: 22px;
+            text-align: center;
+            color: #858c88;
+            font-size: 10px;
+        }
+
+        .login a {
+            color: #315f4b;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 850px) {
+            .page {
+                grid-template-columns: 1fr;
+            }
+
+            .visual {
+                min-height: 430px;
+                padding: 32px;
+            }
+
+            .quote {
+                display: none;
+            }
+
+            .form-area {
+                min-height: auto;
+                padding: 35px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .visual {
+                min-height: 360px;
+                padding: 25px;
+            }
+
+            .visual-content h1 {
+                font-size: 38px;
+            }
+
+            .form-area {
+                padding: 22px 14px;
+            }
+
+            .card {
+                padding: 28px 21px;
+                border-radius: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="page">
 
-<h1>Create Account</h1>
+    <section class="visual">
 
-<form id="registerForm">
+        <div class="brand">
 
-<label>Name</label>
-<input type="text" id="name" required>
+            <div class="brand-icon">M</div>
 
-<label>Email</label>
-<input type="email" id="email" required>
+            <div>
+                <div class="brand-name">Mahesh Resume Builder</div>
+                <div class="brand-subtitle">
+                    Professional Resume Platform
+                </div>
+            </div>
 
-<label>Password</label>
-<input type="password" id="password" required>
+        </div>
 
-<label>Confirm Password</label>
-<input type="password" id="confirmPassword" required>
+        <div class="visual-content">
 
-<button type="submit">
-Register
-</button>
+            <div class="page-number">02 / 06</div>
 
-</form>
+            <h1>
+                Your next
+                <span>opportunity</span>
+                starts here.
+            </h1>
 
-<div class="login">
-Already have an account?
-<a href="login.html">Login</a>
+            <p>
+                Create your account and start building a professional
+                resume designed to present your skills, education,
+                projects and experience clearly.
+            </p>
+
+        </div>
+
+        <div class="quote">
+            “A good resume presents your experience,
+            skills and potential in a clear professional way.”
+        </div>
+
+    </section>
+
+
+    <section class="form-area">
+
+        <div class="card">
+
+            <div class="header">
+
+                <div class="step">
+                    STEP 01 · CREATE ACCOUNT
+                </div>
+
+                <h2>Create your account</h2>
+
+                <p>
+                    Join the platform and start creating your
+                    professional resume.
+                </p>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>FULL NAME</label>
+
+                <div class="input">
+
+                    <div class="icon">M</div>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>USERNAME</label>
+
+                <div class="input">
+
+                    <div class="icon">@</div>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Choose a username"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>EMAIL ADDRESS</label>
+
+                <div class="input">
+
+                    <div class="icon">✉</div>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>PASSWORD</label>
+
+                <div class="input">
+
+                    <div class="icon">◆</div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                    >
+
+                </div>
+
+                <div class="password-help">
+                    Use at least 8 characters.
+                </div>
+
+            </div>
+
+
+            <label class="terms">
+
+                <input type="checkbox" id="terms">
+
+                <span>
+                    I agree to the
+                    <a href="#">Terms of Service</a>
+                    and
+                    <a href="#">Privacy Policy</a>.
+                </span>
+
+            </label>
+
+
+            <button class="create" onclick="createAccount()">
+                Create My Account →
+            </button>
+
+
+            <div class="divider">
+                OR CONTINUE WITH
+            </div>
+
+
+            <button class="google" onclick="googleSignup()">
+
+                <div class="google-mark">G</div>
+
+                Continue with Google
+
+            </button>
+
+
+            <div class="login">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Sign in
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
 
-</div>
 
 <script>
 
-document.getElementById("registerForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
+function createAccount() {
 
     const name =
         document.getElementById("name").value.trim();
+
+    const username =
+        document.getElementById("username").value.trim();
 
     const email =
         document.getElementById("email").value.trim();
@@ -116,32 +586,60 @@ document.getElementById("registerForm")
     const password =
         document.getElementById("password").value;
 
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
+    const terms =
+        document.getElementById("terms").checked;
 
-    if(password !== confirmPassword){
 
-        alert("Passwords do not match!");
+    if (!name || !username || !email || !password) {
+
+        alert("Please fill all required fields.");
+
         return;
-
     }
 
-    const user = {
-        name:name,
-        email:email,
-        password:password
-    };
 
-    localStorage.setItem(
-        "resumeBuilderUser",
-        JSON.stringify(user)
-    );
+    if (password.length < 8) {
 
-    alert("Registration Successful!");
+        alert("Password must contain at least 8 characters.");
 
-    window.location.href="login.html";
+        return;
+    }
 
-});
+
+    if (!terms) {
+
+        alert("Please accept the Terms of Service.");
+
+        return;
+    }
+
+
+    /*
+       SAVE USER INFORMATION
+       These keys MUST match login.html
+    */
+
+    localStorage.setItem("resumeName", name);
+
+    localStorage.setItem("resumeUsername", username);
+
+    localStorage.setItem("resumeEmail", email);
+
+    localStorage.setItem("resumePassword", password);
+
+
+    alert("Account created successfully!");
+
+
+    window.location.href = "login.html";
+}
+
+
+function googleSignup() {
+
+    alert("Google Sign Up will be connected here.");
+
+}
 
 </script>
 
